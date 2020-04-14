@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func main() {
+	var buffer [256]byte
+	fmt.Println("before", buffer)
+
+	slice := buffer[10:20]
+	for i := 0; i < len(slice); i++ {
+		slice[i] = byte(i)
+	}
+
+	fmt.Println("before", slice)
+	fmt.Println("after buffer", buffer)
+
+	AddOneToEachElement(slice)
+	fmt.Println("after", slice)
+}
+
+func AddOneToEachElement(slice []byte) {
+	for i := range slice {
+		slice[i]++
+	}
+}
